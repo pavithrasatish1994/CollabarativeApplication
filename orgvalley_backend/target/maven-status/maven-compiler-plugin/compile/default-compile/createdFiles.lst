@@ -1,0 +1,10 @@
+com\niit\orgvalley_backend\daoimpl\UsersDaoImpl.class
+com\niit\orgvalley_backend\config\ApplicationContextConfig.class
+com\niit\orgvalley_backend\model\Blog.class
+com\niit\orgvalley_backend\dao\ProfileDaoImpl.class
+com\niit\orgvalley_backend\App.class
+com\niit\orgvalley_backend\model\Users.class
+com\niit\orgvalley_backend\model\Friend.class
+com\niit\orgvalley_backend\dao\ProfileDao.class
+com\niit\orgvalley_backend\dao\UsersDao.class
+com\niit\orgvalley_backend\model\Profile.class
