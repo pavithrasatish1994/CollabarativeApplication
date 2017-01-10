@@ -12,11 +12,20 @@ public class UsersTest {
 		ctx.refresh();
 		System.out.println("DONE");
 
-		UsersDao ud = (UsersDao) ctx.getBean("usersDao");
+		UsersDao usersDao = (UsersDao) ctx.getBean("usersDao");
+		Users users=(Users) ctx.getBean("users");
+//		users.setId(100);// to insert the data
+//		users.setLogin_id(100);
+//		users.setName("zzz");
+//		users.setPwd("zzz");
+//		usersDao.insertORupdate(users);// to insert
+//		usersDao.delUsers(1);// to delete
+		users=usersDao.getUser(2);// to fetch 
+		System.out.println(users.getName());// to fetch
 		
-		List <Users> lst = ud.list();
-		String x=lst!=null?"DOneeeeeeeeeeeeeeeeeeeeeeeeeee":"Notdon";
-		System.out.println(x);
+//		List <Users> lst = ud.list();
+//		System.out.println(lst.size());
+//		
 		
 }
 }

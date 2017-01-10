@@ -10,18 +10,18 @@ import org.springframework.stereotype.Component;
 public class Profile {
 @Id
 
-private int id;
+private int pid;
 private String name;
 private String skills;
 private String profile;
 private String location;
-private String number;
+private String phone_no;
 private String image;
-public int getId() {
-	return id;
+public int getPid() {
+	return pid;
 }
-public void setId(int id) {
-	this.id = id;
+public void setPid(int pid) {
+	this.pid = pid;
 }
 public String getName() {
 	return name;
@@ -47,11 +47,11 @@ public String getLocation() {
 public void setLocation(String location) {
 	this.location = location;
 }
-public String getNumber() {
-	return number;
+public String getPhone_no() {
+	return phone_no;
 }
-public void setNumber(String number) {
-	this.number = number;
+public void setPhone_no(String phone_no) {
+	this.phone_no = phone_no;
 }
 public String getImage() {
 	return image;
