@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="js">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>ORG VALLEY</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" text="text/css" href="css/bootstrap.min.css" >
    <link rel="stylesheet" text="text/css" href="css/style.css" >
-   <link rel="stylesheet" text="text/js" href="js/jquery-2.2.4.min.js">  
    
-     
 <style>
 body {
     background-color:#239B56;
@@ -15,7 +14,7 @@ body {
 
 </style>
 </head>
-<body>
+<body id="page-top" ng-app="myApp" ng-controller="UserController">
 
 
 <nav class="navbar navbar-inverse col">
@@ -27,35 +26,41 @@ body {
       </div>
    </div>
   </nav>
-
-<form class="form-horizontal abcd text-center">
+<div class="form">
+<form ng-submit="doLogin(users)" class="form-horizontal abcd text-center">
             
-  <div class="form-group">
+
       <h3 style="text-align:center; " > <i><b> SIGNIN </b></i></h3> <br>
       <br>
    
     <div class="form-group">
-    <label for="login-id" class="col-sm-2 control-label">LOGIN-ID </label>
+    <label for="id" class="col-sm-2 control-label">ID </label>
     <div class="col-sm-8">
-      <input type="login-id" class="form-control" id="login-id" placeholder="LOGIN-ID">
+     <input type="text" class="form-control" id="exampleInputName" ng-model="users.id"  placeholder="Id" required >
     </div>
   </div>
   <div class="form-group">
     <label for="password" class="col-sm-2 control-label">PASSWORD </label>
     <div class="col-sm-8">
-      <input type="password" class="form-control" id="password" placeholder="PASSWORD">
+      <input type="password" class="form-control" id="exampleInputPassword" ng-model="users.pwd"  placeholder="Password" required >
     </div>
   </div>
  
-</div>
- <div class="text-center">
-<a href="home.html"  class="btn btn-primary" role="button">SUBMIT</a>
-</div>
+  <button type="submit"  class="btn btn-primary">Submit</button>
+  <a href="index.html" class="btn btn-danger">Cancel</a>
+
 </form>
+</div>
 
 
 <div class="footer" style="position: absolute; bottom: 0; width:100%;">
  <h4 style="text-align:center; color:#D0D3D4;"> copyrights@2016</h4>
 </div>
+
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/user_controller.js"></script>
+    <script src="js/user_service.js"></script>
 </body>
 </html>

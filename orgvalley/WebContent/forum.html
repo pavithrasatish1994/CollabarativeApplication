@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="js">
 <head>
+<meta charset="utf-8">
 <title>ORG VALLEY</title>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <link rel="stylesheet" text="text/css" href="css/bootstrap.min.css" >
-<link rel="stylesheet" text="text/css" href="css/style.css" >
-<link rel="stylesheet" text="text/js" href="js/jquery-2.2.4.min.js">  
-    
+   <link rel="stylesheet" text="text/css" href="css/style.css" >
+   
 <style>
 body {
     background-color:#239B56;
 }
+
 </style>
 </head>
-<body>
+<body ng-app="myApp"  ng-controller="ForumController">
 
 
 <!-- --------------------------------------------navbar ----------------------------------------------------->
@@ -31,36 +29,107 @@ body {
       </div>
     
     <ul class="nav navbar-nav navbar-right down">
-      <a href="add_post.html" class="btn btn-primary" role="button">ADD POST</a>
+     
+      <a> <button href="#" ng-click="selectTab('fnew')" class="btn btn-primary">Add New Post</button></a>
         <a href="home.html" class="btn btn-primary" role="button">BACK</a>
         <a href="index.html" class="btn btn-primary" role="button">SIGN-OUT</a>
     </ul>
   </div>
 
   </nav>
-  <!-- ---------------------------------------------name---------------------------------------------- -->
-<div class="w3-container w3-center w3-animate-left">
-  <h2 style="color:#D0D3D4;"><i>FORUM</i></h2> 
-</div>
+
+
 
 <!-- ---------------------------------------------BODY------------------------------------------------- -->
-<div class="container">
-<h3  style="color:#D0D3D4;">Questions</h3>
-<hr>
-<h4  style="color:#D0D3D4;">  <a href="forum_des.html" type="button" class="btn btn-default">ANSWER</a> &nbsp;  1. Changing color of tag-input dynamically angular2 </h4>
-<hr>
-<h4  style="color:#D0D3D4;">  <a href="forum_des.html" type="button" class="btn btn-default">ANSWER</a> &nbsp; 2. How to manage memory?</h4>
-<hr>
-<h4  style="color:#D0D3D4;">  <a href="forum_des.html" type="button" class="btn btn-default">ANSWER</a> &nbsp; 3.How do I make a t-test across several groups in one column in R?</h4>
-<hr>
-<h4  style="color:#D0D3D4;">  <a href="forum_des.html" type="button" class="btn btn-default">ANSWER</a> &nbsp; 4.Android prevent service from being killed by application manager</h4>
-<hr>
-<h4  style="color:#D0D3D4;">  <a href="forum_des.html" type="button" class="btn btn-default">ANSWER</a> &nbsp; 5.How to download oracle through mvn repositories?</h4>
-
-</div>
-
+    
+				<div class="content">
+        <div class="container">
+          <div class="row">
+            <ul class="post-grid" ng-show="isSelected('ftb')">
+          <li ng-repeat="cfrm in forumms" class="col-s-12" ng-class="{ 'reset-s' : $index%3==0 }" ng-click="selectTab(cfrm.fid)" >
+            <h3>FORUM TITLE: {{cfrm.ftitle}}</h3>
+            <h4>FORUM ID: {{cfrm.fid}}</h4>
+            <h4>FORUM DESCRIPTION:{{cfrm.fdy}}</h4>
+           <h4>FORUM COMMMENTS: {{cfrm.fcmtct}}</h4>
+            <h4>FORUM LIKES: {{cfrm.flikct}}</h4>
+           
+          </li>
+        </ul>
+        <hr>
+        <div class="post" ng-repeat="cfrm in forumms" ng-show="isSelected(cfrm.fid)">
+          <div>
+            
+            <h2>FORUM TITLE:{{cfrm.ftitle}}</h2>
+            <h2>FORUM ID:{{cfrm.fid}}</h2>
+           
+            <p>FORUM DESCRIPTION:{{cfrm.fdy}}</p>
+            <cite>by {{cfrm.fusr}} on {{cfrm.fpostdat | date}}</cite>
+            <div class="post-body">
+             <p ng-repeat="paragraph in cfrm.fdy">
+               {{paragraph}}
+             </p> 
+            </div>
+            </div>
+            
+            
+            <div class="comments">
+              <button class="fa fa-heart" ng-click="updateLik(cfrm.flikct = cfrm.flikct+1,cfrm.fid,cfrm)"> {{cfrm.flikct}}</button>
+              <h3>Replyes</h3>
+              <ul>
+               <li ng-repeat="repl in repls">
+                 "{{repl.rpl}}"
+                 <cite>- <b>{{repl.fusr}}</b></cite>
+               </li>
+              </ul>
+              <hr>
+              <form name="commentForm" ng-submit="commentForm.$valid && addRpl(reply,cfrm.fid,cfrm)" novalidate>
+              
+                
+                <h4>Add Comment</h4>
+                  <textarea ng-model="reply.rpl" cols="150" rows="10" required></textarea><br>
+                <label for="">by:</label>
+                  <input type="text" ng-model="reply.fusr" required placeholder="Name"/><br>
+                  
+                  <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+        
+      </div>
+      </div>
+      </div>
+        <div class="post" ng-show="isSelected('fnew')">
+          <h2>Add New Post</h2>
+          
+         
+          <form name="postForms" ng-submit=" addForum(forumm)" novalidate>
+                  <h4>Forum ID</h4>
+                  <input type="text" ng-model="forumm.fid"/>
+                  <h4>Title</h4>
+                  <input type="text" ng-model="forumm.ftitle"/>
+                  <h4>Body</h4>
+                  <textarea ng-model="forumm.fdy" rows="10" cols="100"></textarea><br><br><br>
+                  
+                  <label for="">by:</label>
+                  <input type="text" ng-model="forumm.fusr" placeholder="Author Name" required/>
+                  
+                  <input type="submit" value="Submit" />
+                </form>
+          
+            </div>
+            
+            
 <div class="footer">
  <h4 style="text-align:center; color:#D0D3D4;"> copyrights@2016</h4>
 </div>
+</div>
+</div>
+
+  <script src="js/angular/angular.js"></script>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/forum_controller.js"></script>
+    <script src="js/forum_service.js"></script>
+
 </body>
 </html>
