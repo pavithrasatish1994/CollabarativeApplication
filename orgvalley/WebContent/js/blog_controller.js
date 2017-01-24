@@ -43,9 +43,16 @@ angular.module('myApp').controller('BlogController', ['$scope', 'BlogService', f
     $scope.addBlog=function(blogm)
     {
     	 console.log(blogm);
+    	 console.log("11111111111111111111111111111111");
     	 BlogService.addBlog(blogm)
         .then(
+        		function(response){
+        			console.log("6666666666");
+        			console.log("susseccfully fully created blog");
+                },
+        		
         		function(errResponse){
+        			console.log("66666666666666666666666666666");
             console.error('Error while creating blog');
         });
     }

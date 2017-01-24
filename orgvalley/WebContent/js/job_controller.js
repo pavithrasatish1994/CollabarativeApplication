@@ -25,9 +25,9 @@ angular.module('myApp').controller('JobController', ['$scope', 'JobService', fun
         });
     }
     
-    function fetchAllCom(jobm){
+    function fetchAllCom(jusr){
     	console.log('1111111111111111111111111111');
-    	JobService.fetchAllCom(jobm)
+    	JobService.fetchAllCom(jusr)
         .then(
         function(d) {
         	$scope.coments = d;

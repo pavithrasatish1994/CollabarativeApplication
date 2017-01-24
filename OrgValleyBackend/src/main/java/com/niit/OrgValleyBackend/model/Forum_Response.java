@@ -14,6 +14,7 @@ private int rid;
 private int fid;
 private String rpl;
 private String fusr;
+private String flogin_id;
 private Date rdat;
 public int getRid() {
 	return rid;
@@ -38,6 +39,12 @@ public String getFusr() {
 }
 public void setFusr(String fusr) {
 	this.fusr = fusr;
+}
+public String getFlogin_id() {
+	return flogin_id;
+}
+public void setFlogin_id(String flogin_id) {
+	this.flogin_id = flogin_id;
 }
 public Date getRdat() {
 	return rdat;

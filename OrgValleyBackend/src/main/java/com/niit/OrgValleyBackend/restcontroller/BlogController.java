@@ -55,11 +55,11 @@ public class BlogController {
 	           
 	           try{
 	        blog_masterDao.SaveOrUpdate(blog_master);
-	        System.out.println("DONe11111111111111111111111111111111111111111111"+blog_master.getBtitle());
+	        System.out.println("3333333333333333333333333333333"+blog_master.getBtitle());
 	           }catch(Exception e){System.out.println("EXPTION......"+e.toString());}
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.setLocation(ucBuilder.path("/users/{id}").buildAndExpand(blogMaster.getBid()).toUri());
-	        System.out.println("done22222222222222222222222222222222222222222222");
+	        System.out.println("444444444444444444444444444444444");
 	        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	    }
 	 

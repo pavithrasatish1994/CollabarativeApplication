@@ -27,11 +27,11 @@ angular.module('myApp').factory('JobService', ['$http', '$q', function($http, $q
     }
    
     
-    function fetchAllCom(jobm) {
+    function fetchAllCom(jid) {
         var deferred = $q.defer();
-        console.log('22222222222222222222222');
+        console.log('22222222222222222222222',jid);
         
-        $http.get('http://localhost:8080/OrgValleyBackend/coments/'+jobm.jid)
+        $http.get('http://localhost:8080/OrgValleyBackend/coments/'+jid)
             .then(
             function (response) {
             	console.log('Goooooooooooooooooooooooot');

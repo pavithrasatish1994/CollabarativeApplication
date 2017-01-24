@@ -16,8 +16,9 @@ public static void main(String[] args) {
 	
 	JobDao jobDao = (JobDao) ctx.getBean("jobDao");
 	Job job = (Job) ctx.getBean("job");
-	List <Job> lst = jobDao.list();
-	System.out.println(lst.size());
+//	List <Job> lst = jobDao.list();
+//	System.out.println(lst.size());
+	jobDao.delete(3);
 	
 }
 }

@@ -1,5 +1,4 @@
 package com.niit.OrgValleyBackend.restcontroller;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.OrgValleyBackend.dao.JobDao;
@@ -40,12 +40,12 @@ public class JobController {
 	
 	//COMMENTS
 	 
-		 @RequestMapping(value = "/coments/{jid}", method = RequestMethod.GET)
-		    public ResponseEntity<List<Job_Comment>> listAllComents(@PathVariable("jid") int jid) {
+		 @RequestMapping(value = "/jcoments/{jid}", method = RequestMethod.GET)
+		    public ResponseEntity<List<Job_Comment>> listComents(@RequestParam("jid") int jid) {
 		   
 			 System.out.println("333333333333333333333333333333");
 			 System.out.println(jid);   
-			 List<Job_Comment> cmtlst = job_commentDao.getAll();
+			 List<Job_Comment> cmtlst = job_commentDao.getCmts(jid);
 		        System.out.println("444444444444444444444444444444");
 		        if(cmtlst.isEmpty()){
 		            return new ResponseEntity<List<Job_Comment>>(HttpStatus.NO_CONTENT);

@@ -1,4 +1,5 @@
 com\niit\OrgValleyBackend\model\Blog_Master.class
+com\niit\OrgValleyBackend\dao\FriendDao.class
 com\niit\OrgValleyBackend\daoimpl\UsersDaoImpl.class
 com\niit\OrgValleyBackend\dao\Job_CommentDao.class
 com\niit\OrgValleyBackend\daoimpl\Forum_ResponseDaoImpl.class
@@ -24,6 +25,7 @@ com\niit\OrgValleyBackend\model\Blog_Comment.class
 com\niit\OrgValleyBackend\dao\JobDao.class
 com\niit\OrgValleyBackend\dao\Blog_MasterDao.class
 com\niit\OrgValleyBackend\model\Job_Comment.class
+com\niit\OrgValleyBackend\daoimpl\FriendDaoImpl.class
 com\niit\OrgValleyBackend\daoimpl\JobDaoImpl.class
 com\niit\OrgValleyBackend\daoimpl\ProfileDaoImpl.class
 com\niit\OrgValleyBackend\model\Users.class

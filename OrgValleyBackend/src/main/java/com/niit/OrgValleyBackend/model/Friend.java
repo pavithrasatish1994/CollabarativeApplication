@@ -9,29 +9,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class Friend {
 @Id
-private int id;
-private String userId;
-private String friendId;
+private int friend_id;
+private int user_id;
 private String status;
 private char isOnline;
-public int getId() {
-	return id;
+
+
+public int getFriend_id() {
+	return friend_id;
+}
+public void setFriend_id(int friend_id) {
+	this.friend_id = friend_id;
 }
 
-public void setId(int id) {
-	this.id = id;
+
+public int getUser_id() {
+	return user_id;
 }
-public String getUserId() {
-	return userId;
-}
-public void setUserId(String userId) {
-	this.userId = userId;
-}
-public String getFriendId() {
-	return friendId;
-}
-public void setFriendId(String friendId) {
-	this.friendId = friendId;
+public void setUser_id(int user_id) {
+	this.user_id = user_id;
 }
 public String getStatus() {
 	return status;

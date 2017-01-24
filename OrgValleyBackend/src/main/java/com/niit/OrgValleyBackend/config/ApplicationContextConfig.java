@@ -17,6 +17,7 @@ import com.niit.OrgValleyBackend.dao.Blog_CommentDao;
 import com.niit.OrgValleyBackend.dao.Blog_MasterDao;
 import com.niit.OrgValleyBackend.dao.Forum_MasterDao;
 import com.niit.OrgValleyBackend.dao.Forum_ResponseDao;
+import com.niit.OrgValleyBackend.dao.FriendDao;
 import com.niit.OrgValleyBackend.dao.JobDao;
 import com.niit.OrgValleyBackend.dao.Job_CommentDao;
 import com.niit.OrgValleyBackend.daoimpl.UsersDaoImpl;
@@ -24,6 +25,7 @@ import com.niit.OrgValleyBackend.daoimpl.Blog_CommentDaoImpl;
 import com.niit.OrgValleyBackend.daoimpl.Blog_MasterDaoImpl;
 import com.niit.OrgValleyBackend.daoimpl.Forum_MasterDaoImpl;
 import com.niit.OrgValleyBackend.daoimpl.Forum_ResponseDaoImpl;
+import com.niit.OrgValleyBackend.daoimpl.FriendDaoImpl;
 import com.niit.OrgValleyBackend.daoimpl.JobDaoImpl;
 import com.niit.OrgValleyBackend.daoimpl.Job_CommentDaoImpl;
 import com.niit.OrgValleyBackend.model.Users;
@@ -31,6 +33,7 @@ import com.niit.OrgValleyBackend.model.Blog_Comment;
 import com.niit.OrgValleyBackend.model.Blog_Master;
 import com.niit.OrgValleyBackend.model.Forum_Master;
 import com.niit.OrgValleyBackend.model.Forum_Response;
+import com.niit.OrgValleyBackend.model.Friend;
 import com.niit.OrgValleyBackend.model.Job;
 import com.niit.OrgValleyBackend.model.Job_Comment;
 
@@ -59,7 +62,8 @@ public class ApplicationContextConfig {
 		Properties properties = new Properties();
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
-//		properties.put("hibernate.hbm2ddl.auto", "create");
+		properties.put("hibernate.hbm2ddl.auto", "create");
+		properties.put("hibernate.hbm2ddl.auto", "update");
 		System.out.println("*******HibernateProperties initialized****");
 		return properties;
 	}
@@ -80,6 +84,7 @@ public class ApplicationContextConfig {
 		sessionBuilder.addAnnotatedClass(Blog_Comment.class);
 		sessionBuilder.addAnnotatedClass(Job.class);
 		sessionBuilder.addAnnotatedClass(Job_Comment.class);
+		sessionBuilder.addAnnotatedClass(Friend.class);
 		System.out.println("********SessionFactory initialized**************");
 		return sessionBuilder.buildSessionFactory();
 		}catch(Exception e){System.out.println("Hellloooooooooo "+e.toString());}
@@ -141,6 +146,12 @@ public class ApplicationContextConfig {
 		return new Job_CommentDaoImpl(sessionFactory);
 	}
 	
+	@Autowired
+	@Bean(name="friendDao")
+	public FriendDao getFriendDao(SessionFactory sessionFactory)
+	{
+		return new FriendDaoImpl(sessionFactory);
+		}
 	
 	@Autowired
 	@Bean(name="users")
@@ -185,4 +196,10 @@ public class ApplicationContextConfig {
 		return new Job_Comment();
 	}
 	
+	@Autowired
+	@Bean(name="friend")
+	public Friend getFriend()
+	{
+		return new Friend();
+	}
 }

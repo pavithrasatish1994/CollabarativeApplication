@@ -29,12 +29,13 @@ angular.module('myApp').factory('BlogService', ['$http', '$q', function($http, $
     }
     function addBlog(blogm) {
         var deferred = $q.defer();
-        console.log("kkkkkkkkkkkkkkkkkkkkkk");
+        console.log("2222222222222222222222222222222222222");
         $http.post('http://localhost:8080/OrgValleyBackend/blog/insert/',blogm)
             .then(
             		
             function (response) {
             	 console.log(blogm);
+            	 console.log("555555555555555555555555");
             	console.log('Saving New User A2',blogm);
             	deferred.resolve(response.data);
             },
