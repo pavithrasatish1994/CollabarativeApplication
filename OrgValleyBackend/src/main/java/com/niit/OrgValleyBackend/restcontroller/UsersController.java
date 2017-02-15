@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.niit.OrgValleyBackend.dao.UsersDao;
+import com.niit.OrgValleyBackend.daoimpl.UsersDaoImpl;
 import com.niit.OrgValleyBackend.model.Users;
 
 @RestController
@@ -23,6 +24,7 @@ public class UsersController {
 Users users;
 @Autowired
 UsersDao usersDao;
+
 
 //----------------------------------------------FETCH ALL USERS---------------------------------------------
 
@@ -54,12 +56,12 @@ public ResponseEntity<Users> getUser(@PathVariable("id") int id,@PathVariable("p
 //--------------------------------------------INSERT-------------------------------------------------------------
 @RequestMapping(value = "/users/insert", method = RequestMethod.POST )
 public ResponseEntity<Void> createUser(@ModelAttribute("users") Users user, @RequestBody Users users,   UriComponentsBuilder ucBuilder) {
-       System.out.println("Done Here "+users.getLogin_id());
+       System.out.println("Doneeeeeeeeeeeeeeeeee Here "+users.getLogin_id());
        
     usersDao.insertORupdate(users);
 
     HttpHeaders headers = new HttpHeaders();
-    headers.setLocation(ucBuilder.path("/users/{id}").buildAndExpand(users.getId()).toUri());
+    headers.setLocation(ucBuilder.path("/users/{id}").buildAndExpand(users.getLogin_id()).toUri());
     return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 }
 

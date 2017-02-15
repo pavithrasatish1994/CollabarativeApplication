@@ -49,10 +49,11 @@ body {
           <div class="row">
             <ul class="post-grid spacing" ng-show="isSelected('ftb')">
           <li ng-repeat="cfrm in forumms" class="col-s-12" ng-class="{ 'reset-s' : $index%3==0 }" ng-click="selectTab(cfrm.fid)" >
-            <h3>FORUM TITLE: {{cfrm.ftitle}}</h3>
-            <h4>FORUM ID: {{cfrm.fid}}</h4>
-            <h4>FORUM COMMMENTS: {{cfrm.fcmtct}}</h4>
-            <h4>FORUM LIKES: {{cfrm.flikct}}</h4>
+            <h3>{{cfrm.fid}} &nbsp;{{cfrm.ftitle}}</h3>
+  
+
+&nbsp; <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{cfrm.fcmtct}} &nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> {{cfrm.flikct}}</h4>
+           
             <hr>
           </li>
         </ul>
@@ -63,10 +64,10 @@ body {
             <h3>FORUM TITLE:{{cfrm.ftitle}}</h3>
             <h4>FORUM ID:{{cfrm.fid}}</h4>
            <div class="post-body">
-             <p><b>
-               FORUM DESCRIPTION:{{cfrm.fdy}}</b></p>
+             <h4><b>
+               FORUM DESCRIPTION:{{cfrm.fdy}}</b></h4>
                </div>
-         <b>   <h5>by<br><br></b>
+         <b>   <h5>by</h5></b>
          <b>  USER ID&nbsp;:&nbsp;{{cfrm.fid}}</b><br><br><b> NAME&nbsp;:&nbsp;{{cfrm.fusr}} &nbsp; &nbsp;on &nbsp; &nbsp; {{cfrm.fpostdat | date}}</b></h5><br><br>
             <div class="post-body">
              <p ng-repeat="paragraph in cfrm.fdy">
@@ -77,7 +78,7 @@ body {
             
             
             <div class="comments">
-              <button class="fa fa-heart" ng-click="updateLik(cfrm.flikct = cfrm.flikct+1,cfrm.fid,cfrm)"><span class="glyphicon glyphicon-thumbs-up"> &nbsp;{{cfrm.flikct}}</span></button>
+              <button class="fa fa-heart" ng-click="updateLik(cfrm.flikct = cfrm.flikct+1,cfrm.fid,cfrm)"><h4><span class="glyphicon glyphicon-thumbs-up"> &nbsp;{{cfrm.flikct}}</span></h4></button>
               <h3>Replyes</h3>
               <ul>
                <li ng-repeat="repl in repls">
@@ -88,12 +89,12 @@ body {
               <hr>
               <form name="commentForm" ng-submit="commentForm.$valid && addRpl(reply,cfrm.fid,cfrm)" novalidate>
                <h4>Add Comment</h4>
-                  <textarea ng-model="reply.rpl" cols="150" rows="10" required></textarea><br>
+                  <textarea ng-model="reply.rpl" cols="150" rows="10" required></textarea><br><br>
                 <label for="">by:</label>
-                 <input type="text" ng-model="reply.fid" required placeholder="ID"/><br>
-                  <input type="text" ng-model="reply.fusr" required placeholder="Name"/><br>
+              <input type="text" ng-model="reply.fid" required placeholder="ID"/><br><br>
+                &nbsp;&nbsp; &nbsp;&nbsp; <input type="text" ng-model="reply.fusr" required placeholder="Name"/><br><br>
                   
-                  <input type="submit" value="Submit" />
+              &nbsp;&nbsp; &nbsp;&nbsp;   <input type="submit" value="Submit" />
                 </form>
             </div>
         </div>

@@ -2,7 +2,7 @@ var CreateProxy = function(wsUri) {
 	var websocket = null;
 	var audio = null;
 	var elements = null;
-	console.log("chatrommmmmmmmmmmmmmmmmmmm");
+	console.log("chatrommm");
 	var playSound = function() {
 		if (audio == null) {
 			audio = new Audio('content/sounds/beep.wav');
